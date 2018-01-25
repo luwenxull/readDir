@@ -1,4 +1,3 @@
-/* eslint-disable */
 const fs = require('fs')
 const path = require('path')
 
@@ -10,8 +9,8 @@ function coroutine(generatorFunction) {
   }
 }
 
-module.exports = function readDir2(dir, filter, callback) {
-  const fn = function (pi) {
+module.exports = function readDir2(dir, filters, callback) {
+  const fn = function (dir, pi) {
     let filteredFiles = []
     fs.readdir(dir, function(err, files) {
       if (err) throw err
@@ -52,7 +51,5 @@ module.exports = function readDir2(dir, filter, callback) {
       }
     })
   }
-  fn()
+  fn(dir)
 }
-// // readDir(path.resolve(__dirname, 'src'))
-// readDir2(path.resolve(__dirname, 'src', ''))
